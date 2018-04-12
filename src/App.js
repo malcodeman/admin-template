@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Route, Redirect } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "./Layout/Sidebar";
+import Toolbar from "./Layout/Toolbar";
 
 import "./App.css";
 import routes from "./Routing/routes_sidebar";
@@ -42,6 +43,7 @@ class App extends Component {
       <Wrapper>
         <Sidebar />
         <Main>
+          <Toolbar />
           {routes.map((route, index) => (
             <Route
               key={index}
