@@ -27,14 +27,6 @@ const Main = styled.main`
 `;
 
 class App extends Component {
-  componentDidMount = () => {
-    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
-      "token"
-    );
-    axios.get("http://localhost:9000/api/v1/brands").then(res => {
-      console.log(res.data);
-    });
-  };
   render() {
     if (localStorage.getItem("token") === null) {
       return <Redirect to="/login" />;
