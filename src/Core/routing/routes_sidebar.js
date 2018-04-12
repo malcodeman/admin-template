@@ -1,8 +1,8 @@
-import Home from "../Home/Home";
-import Campaigns from "../Campaigns/Campaigns";
-import Orders from "../Orders/Orders";
-import Reports from "../Reports/Reports";
-import Brands from "../Brands/Brands";
+import Home from "../../Features/Home/Home";
+import Campaigns from "../../Features/Campaigns/Campaigns";
+import Orders from "../../Features/Orders/Orders";
+import Reports from "../../Features/Reports/Reports";
+import Brands from "../../Features/Brands/Brands";
 
 export default [
   {

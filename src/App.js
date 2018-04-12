@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Route, Redirect } from "react-router-dom";
 import axios from "axios";
-import Sidebar from "./Layout/Sidebar";
-import Toolbar from "./Layout/Toolbar";
+import Sidebar from "./Features/Layout/Sidebar";
+import Toolbar from "./Features/Layout/Toolbar";
 
 import "./App.css";
-import routes from "./Routing/routes_sidebar";
+import routes from "./Core/routing/routes_sidebar";
 
 const Wrapper = styled.div`
   min-height: 100vh;
