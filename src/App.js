@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { Route, Link, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import axios from "axios";
+import Sidebar from "./Layout/Sidebar";
 
 import "./App.css";
-import routes from "./Routes/routes_sidebar";
+import routes from "./Routing/routes_sidebar";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -17,13 +18,6 @@ const Wrapper = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: 256px 1fr;
   }
-`;
-
-const Sidebar = styled.aside`
-  grid-area: sidebar;
-  background-color: black;
-  display: flex;
-  flex-direction: column;
 `;
 
 const Main = styled.main`
@@ -46,13 +40,7 @@ class App extends Component {
     }
     return (
       <Wrapper>
-        <Sidebar>
-          <Link to="/">Home</Link>
-          <Link to="/campaigns">Campaigns</Link>
-          <Link to="/orders">Orders</Link>
-          <Link to="/reports">Reports</Link>
-          <Link to="/brands">Brands</Link>          
-        </Sidebar>
+        <Sidebar />
         <Main>
           {routes.map((route, index) => (
             <Route
