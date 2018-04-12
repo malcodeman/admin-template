@@ -4,22 +4,7 @@ import { Route, Link, Redirect } from "react-router-dom";
 import axios from "axios";
 
 import "./App.css";
-
-const routes = [
-  {
-    path: "/",
-    exact: true,
-    main: () => <h2>Home</h2>
-  },
-  {
-    path: "/campaigns",
-    main: () => <h2>Campaigns</h2>
-  },
-  {
-    path: "/brands",
-    main: () => <h2>Brands</h2>
-  }
-];
+import routes from "./Routes/routes_sidebar";
 
 const Wrapper = styled.div`
   min-height: 100vh;
