@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const StyledSidebar = styled.aside`
   grid-area: sidebar;
-  background-color: black;
+  background-color: #191414;
   display: flex;
   flex-direction: column;
 `;
