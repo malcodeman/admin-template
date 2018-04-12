@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Route, Link, Redirect } from "react-router-dom";
+import axios from "axios";
 
-import style from "./App.css";
+import "./App.css";
 
 const routes = [
   {
@@ -44,27 +45,37 @@ const Main = styled.main`
 `;
 
 class App extends Component {
+  componentDidMount = () => {
+    axios.defaults.headers.common["Authorization"] = localStorage.getItem(
+      "token"
+    );
+    axios.get("http://localhost:9000/api/v1/brands").then(res => {
+      console.log(res.data);
+    });
+  };
   render() {
+    if (localStorage.getItem("token") === null) {
+      return <Redirect to="/login" />;
+    }
     return (
-      <Router>
-        <Wrapper>
-          <Sidebar>
-            <Link to="/">Home</Link>
-            <Link to="/campaigns">Campaigns</Link>
-            <Link to="/brands">Brands</Link>
-          </Sidebar>
-          <Main>
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
-          </Main>
-        </Wrapper>
-      </Router>
+      <Wrapper>
+        <Sidebar>
+          <Link to="/">Home</Link>
+          <Link to="/campaigns">Campaigns</Link>
+          <Link to="/brands">Brands</Link>
+        </Sidebar>
+
+        <Main>
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.main}
+            />
+          ))}
+        </Main>
+      </Wrapper>
     );
   }
 }
