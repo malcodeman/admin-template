@@ -1,19 +1,29 @@
 import Home from "../Home/Home";
 import Campaigns from "../Campaigns/Campaigns";
+import Orders from "../Orders/Orders";
+import Reports from "../Reports/Reports";
 import Brands from "../Brands/Brands";
 
 export default [
   {
     path: "/",
-    exact: true,
-    main: Home
+    component: Home,
+    exact: true
   },
   {
     path: "/campaigns",
-    main: Campaigns
+    component: Campaigns
+  },
+  {
+    path: "/orders",
+    component: Orders
+  },
+  {
+    path: "/reports",
+    component: Reports
   },
   {
     path: "/brands",
-    main: Brands
+    component: Brands
   }
 ];

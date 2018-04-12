@@ -22,6 +22,8 @@ const Wrapper = styled.div`
 const Sidebar = styled.aside`
   grid-area: sidebar;
   background-color: black;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Main = styled.main`
@@ -47,16 +49,17 @@ class App extends Component {
         <Sidebar>
           <Link to="/">Home</Link>
           <Link to="/campaigns">Campaigns</Link>
-          <Link to="/brands">Brands</Link>
+          <Link to="/orders">Orders</Link>
+          <Link to="/reports">Reports</Link>
+          <Link to="/brands">Brands</Link>          
         </Sidebar>
-
         <Main>
           {routes.map((route, index) => (
             <Route
               key={index}
               path={route.path}
               exact={route.exact}
-              component={route.main}
+              component={route.component}
             />
           ))}
         </Main>
