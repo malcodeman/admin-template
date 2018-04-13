@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import { requestBrands } from "../actions/actions_brands";
 import Brand from "./Brand";
+import IconAddCircle from "./ic_add_circle.svg";
 
 const BrandsContainer = styled.div`
   display: flex;
@@ -13,7 +14,20 @@ const BrandsContainer = styled.div`
 const Heading = styled.h3`
   text-transform: uppercase;
   color: #627381;
-  font-size: .8rem;
+  font-size: 0.8rem;
+`;
+
+const HeadingWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const AddIcon = styled.img`
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+  cursor: pointer;
 `;
 
 class Brands extends Component {
@@ -24,9 +38,14 @@ class Brands extends Component {
     return (
       <div>
         <BrandsContainer>
-          <Heading>Brands</Heading>
+          <HeadingWrapper>
+            <Heading>Brands</Heading>
+            <AddIcon src={IconAddCircle} />
+          </HeadingWrapper>
           {this.props.brands.map(brand => {
-            return <Brand key={brand.id} logo={brand.logoUrl} name={brand.name} />;
+            return (
+              <Brand key={brand.id} logo={brand.logoUrl} name={brand.name} />
+            );
           })}
         </BrandsContainer>
       </div>
