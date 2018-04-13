@@ -4,6 +4,12 @@ import { connect } from "react-redux";
 
 import { requestOrders } from "../actions/actions_orders";
 import Table from "./Table";
+import Header from "../../Layout/Header";
+import ordersLogo from "../images/ic_header_orders.png";
+
+const Wrapper = styled.div`
+  padding 20px;
+`;
 
 class Orders extends Component {
   componentDidMount = () => {
@@ -11,9 +17,10 @@ class Orders extends Component {
   };
   render() {
     return (
-      <div>
+      <Wrapper>
+        <Header logo={ordersLogo} text="Orders" company="Sony Inc." />
         <Table orders={this.props.orders} />
-      </div>
+      </Wrapper>
     );
   }
 }

@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
+import campaignsLogo from "../images/ic_header_campaigns.png";
 import { requestCampaigns } from "../actions/actions_campaigns";
 import Table from "./Table";
+import Header from "../../Layout/Header";
+
+const Wrapper = styled.div`
+  padding 20px;
+`
 
 class Campaigns extends Component {
   componentDidMount = () => {
@@ -12,9 +17,10 @@ class Campaigns extends Component {
   };
   render() {
     return (
-      <div>
+      <Wrapper>
+        <Header logo={campaignsLogo} text="Campaigns" company="Sony Inc." />
         <Table campaigns={this.props.campaigns} />
-      </div>
+      </Wrapper>
     );
   }
 }

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Route, Redirect } from "react-router-dom";
-import axios from "axios";
 import Sidebar from "./Features/Layout/Sidebar";
 import Toolbar from "./Features/Layout/Toolbar";
 

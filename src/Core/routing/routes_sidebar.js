@@ -1,7 +1,7 @@
-import Home from "../../Features/Home/Home";
+import Home from "../../Features/Home/components/Home";
 import Campaigns from "../../Features/Campaigns/components/Campaigns";
 import Orders from "../../Features/Orders/components/Orders";
-import Reports from "../../Features/Reports/Reports";
+import Reports from "../../Features/Reports/components/Reports";
 
 export default [
   {
