@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 
 const Main = styled.main`
   grid-area: main;
-  background-color: orange;
+  background-color: #fff;
 `;
 
 class App extends Component {
