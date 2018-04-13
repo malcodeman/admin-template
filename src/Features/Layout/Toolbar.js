@@ -2,22 +2,24 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const StyledToolbar = styled.aside`
+import Users from "../Users/components/Users";
+
+const StyledToolbar = styled.div`
   display: flex;
   justify-content: flex-end;
   height: 48px;
-  background-color: #E5E9ED;
+  background-color: #e5e9ed;
+  padding: 0 20px;
 `;
 
 class Toolbar extends Component {
   render() {
     return (
       <StyledToolbar>
-        Toolbar
+        <Users />
       </StyledToolbar>
     );
   }
 }
-
 
 export default Toolbar;
