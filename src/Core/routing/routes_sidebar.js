@@ -1,6 +1,6 @@
 import Home from "../../Features/Home/Home";
 import Campaigns from "../../Features/Campaigns/Campaigns";
-import Orders from "../../Features/Orders/Orders";
+import Orders from "../../Features/Orders/components/Orders";
 import Reports from "../../Features/Reports/Reports";
 import Brands from "../../Features/Brands/Brands";
 
