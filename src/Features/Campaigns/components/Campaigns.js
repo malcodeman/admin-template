@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { requestCampaigns } from "./actions/actions_campaigns";
-import Table from "./components/Table";
+import { requestCampaigns } from "../actions/actions_campaigns";
+import Table from "./Table";
 
 class Campaigns extends Component {
   componentDidMount = () => {
