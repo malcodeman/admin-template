@@ -19,3 +19,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const getBrands = () => {
   return axios.get(`${API_URL}/brands/`);
 };
+
+export const postBrands = newBrand => {
+  return axios.post(`${API_URL}/brands/`, newBrand);
+};

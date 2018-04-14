@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { requestBrands } from "../actions/actions_brands";
 import Brand from "./Brand";
-import IconAddCircle from "./ic_add_circle.svg";
+import IconAddCircle from "../images/ic_add_circle.svg";
 
 const BrandsContainer = styled.div`
   display: flex;
@@ -41,7 +42,9 @@ class Brands extends Component {
         <BrandsContainer>
           <HeadingWrapper>
             <Heading>Brands</Heading>
-            <AddIcon src={IconAddCircle} />
+            <Link to="/brands/new">
+              <AddIcon src={IconAddCircle} />
+            </Link>
           </HeadingWrapper>
           {this.props.brands.map(brand => {
             return (

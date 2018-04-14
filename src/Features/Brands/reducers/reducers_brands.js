@@ -1,8 +1,14 @@
-import { REQUEST_BRANDS } from "../actions/actions_brands";
-import { RECIVE_BRANDS } from "../actions/actions_brands";
+import {
+  REQUEST_BRANDS,
+  RECIVE_BRANDS,
+  UPLOAD_BRANDS,
+  UPLOAD_BRANDS_SUCCEEDED,
+  UPLOAD_BRANDS_FAILED
+} from "../actions/actions_brands";
 
 const initialState = {
   loading: true,
+  uploadBrandsFailed: false,
   brands: []
 };
 
@@ -18,6 +24,16 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         brands: action.payload
+      };
+    case UPLOAD_BRANDS_SUCCEEDED:
+      return {
+        ...state,
+        brands: [...state.brands, action.payload]
+      };
+    case UPLOAD_BRANDS_FAILED:
+      return {
+        ...state,
+        uploadBrandsFailed: true
       };
     default:
       return state;
