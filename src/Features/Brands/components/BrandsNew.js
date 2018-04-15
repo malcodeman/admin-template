@@ -2,18 +2,16 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import axios from "axios";
-
 import { requestBrands, uploadBrands } from "../actions/actions_brands";
+import BrandsNewFrom from "./BrandsNewForm";
 
 class BrandsNew extends Component {
-  componentDidMount = () => {
-    const testBrand = {
-      name: "test brand"
-    };
-    this.props.uploadBrands(testBrand);
-  };
   render() {
-    return <div>brands new</div>;
+    return (
+      <div>
+        brands new<BrandsNewFrom uploadBrands={this.props.uploadBrands} />
+      </div>
+    );
   }
 }
 

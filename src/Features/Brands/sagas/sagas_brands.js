@@ -17,8 +17,7 @@ function* fetchBrands() {
 function* uploadBrands(action) {
   try {
     const data = yield call(postBrands, action.payload);
-    // WARNING: payload should be response from server.
-    yield put({ type: UPLOAD_BRANDS_SUCCEEDED, payload: action.payload });
+    yield put({ type: UPLOAD_BRANDS_SUCCEEDED, payload: data.data });
   } catch (error) {
     yield put({ type: UPLOAD_BRANDS_FAILED, error: error.message });
   }
