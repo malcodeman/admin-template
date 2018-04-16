@@ -1,9 +1,9 @@
 import {
   REQUEST_BRANDS,
   RECIVE_BRANDS,
-  UPLOAD_BRANDS,
   UPLOAD_BRANDS_SUCCEEDED,
-  UPLOAD_BRANDS_FAILED
+  UPLOAD_BRANDS_FAILED,
+  UPLOAD_BRANDS_IMAGE_SUCCEEDED
 } from "../actions/actions_brands";
 
 const initialState = {
@@ -34,6 +34,17 @@ export default (state = initialState, action) => {
       return {
         ...state,
         uploadBrandsFailed: true
+      };
+    case UPLOAD_BRANDS_IMAGE_SUCCEEDED:
+      return {
+        ...state,
+        // Find last item in array and change it's logoUrl with just uploaded logo image
+        brands: state.brands.map(
+          (brand, index) =>
+            index === state.brands.length - 1
+              ? { ...brand, logoUrl: action.payload }
+              : brand
+        )
       };
     default:
       return state;

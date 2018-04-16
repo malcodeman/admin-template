@@ -41,29 +41,45 @@ const Input = styled(Field)`
   border-radius: 2px;
 `;
 
-const FormikForm = ({ values, errors, touched, isSubmitting }) => (
-  <Form>
-    <Label>Name</Label>
-    <Input type="text" name="name" placeholder="Name" />
-    {touched.name && errors.name && <p>{errors.name}</p>}
-    <Label>Logo</Label>
-    <Input type="file" name="logo" />
-    {touched.logo && errors.logo && <p>{errors.logo}</p>}
-    <Button disabled={isSubmitting}>Save</Button>
-  </Form>
-);
+const FormikForm = ({
+  values,
+  errors,
+  touched,
+  isSubmitting,
+  setFieldValue
+}) => {
+  return (
+    <Form>
+      <Label>Name</Label>
+      <Input type="text" name="name" placeholder="Name" />
+      {touched.name && errors.name && <p>{errors.name}</p>}
+      <Label>Logo</Label>
+      <input
+        name="logo"
+        type="file"
+        onChange={event => {
+          setFieldValue("logo", event.currentTarget.files[0]);
+        }}
+      />
+      {touched.logo && errors.logo && <p>{errors.logo}</p>}
+      <Button disabled={isSubmitting}>Save</Button>
+    </Form>
+  );
+};
 
 const BrandsNewForm = withFormik({
   mapPropsToValues: () => ({ name: "", logo: "" }),
   validationSchema: Yup.object().shape({
     name: Yup.string().required("Name is required"),
-    logo: Yup.string().required("Logo is required")
+    logo: Yup.mixed().required("Logo is required")
   }),
   handleSubmit(values, { props, resetForm, setErrors, setSubmitting }) {
     const newBrand = {
-      name: values.name
+      name: values.name,
+      logo: values.logo
     };
     props.uploadBrands(newBrand, setErrors, setSubmitting);
+    setSubmitting(false)
   }
 })(FormikForm);
 

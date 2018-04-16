@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import axios from "axios";
 import { requestBrands, uploadBrands } from "../actions/actions_brands";
 import BrandsNewFrom from "./BrandsNewForm";
 

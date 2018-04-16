@@ -20,6 +20,12 @@ export const getBrands = () => {
   return axios.get(`${API_URL}/brands/`);
 };
 
-export const postBrands = newBrand => {
-  return axios.post(`${API_URL}/brands/`, newBrand);
+export const postBrands = newBrandName => {
+  return axios.post(`${API_URL}/brands/`, { name: newBrandName });
+};
+
+export const postBrandsImage = (brandID, brandImage) => {
+  let formData = new FormData();
+  formData.append("image", brandImage);
+  return axios.post(`${API_URL}/brands/${brandID}/images`, formData);
 };
