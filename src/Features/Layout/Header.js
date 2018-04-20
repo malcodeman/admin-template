@@ -5,7 +5,6 @@ const StyledHeader = styled.header`
   display: flex;
   padding: 10px 10px 20px 10px;
   border-bottom: 1px solid #dfe3e8;
-  margin-bottom: 20px;
 `;
 
 const Logo = styled.img`
