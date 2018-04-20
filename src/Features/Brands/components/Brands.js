@@ -16,13 +16,20 @@ const Heading = styled.h3`
   text-transform: uppercase;
   color: #627381;
   font-size: 0.8rem;
+  display: none;
+  @media (min-width: 576px) {
+    display: inline;
+  }
 `;
 
 const HeadingWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 10px;
+  @media (min-width: 576px) {
+    justify-content: space-between;
+  }
 `;
 
 const AddIcon = styled.img`

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Route, Redirect } from "react-router-dom";
-import Sidebar from "./Features/Layout/Sidebar";
+import Sidebar from "./Features/Layout/sidebar/components/Sidebar";
 import Toolbar from "./Features/Layout/Toolbar";
 
 import "./App.css";
@@ -10,7 +10,7 @@ import routes from "./Core/routing/routes_sidebar";
 const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 64px 1fr;
   grid-template-areas: "sidebar main";
   @media (min-width: 576px) {
     grid-template-columns: 128px 1fr;

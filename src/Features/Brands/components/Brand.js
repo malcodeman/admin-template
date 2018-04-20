@@ -4,19 +4,29 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 4px;
+  justify-content: center;
+  margin-bottom: 10px;
+  @media (min-width: 576px) {
+    justify-content: initial;
+  }
 `;
 
 const Logo = styled.img`
-  height: 24px;
-  width: 24px;
+  height: 32px;
+  width: 32px;
   object-fit: cover;
-  margin-right: 10px;
+  @media (min-width: 576px) {
+    margin-right: 10px;
+  }
 `;
 
 const Name = styled.span`
   font-size: 0.8rem;
   color: #627381;
+  display: none;
+  @media (min-width: 576px) {
+    display: inline;
+  }
 `;
 
 const Brand = props => {

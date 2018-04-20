@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
-import Brands from "../Brands/components/Brands";
+import Brands from "../../../Brands/components/Brands";
+import homeIcon from "../images/home.svg";
 
 const StyledSidebar = styled.aside`
   grid-area: sidebar;
