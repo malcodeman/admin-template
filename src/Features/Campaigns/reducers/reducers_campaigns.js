@@ -23,7 +23,8 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        campaigns: action.payload
+        campaigns: action.payload,
+        uploadProductImageSucceeded: false
       };
     case UPLOAD_CAMPAIGNS_SUCCEEDED:
       return {
