@@ -7,6 +7,7 @@ const StyledTable = styled.table`
 
 const TableHeader = styled.th`
   font-weight: 300;
+  text-align: left;
   padding-bottom: 20px;
 `;
 

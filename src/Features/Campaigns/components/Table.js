@@ -8,6 +8,7 @@ const StyledTable = styled.table`
 
 const TableHeader = styled.th`
   font-weight: 300;
+  text-align: left;
   padding-bottom: 20px;
 `;
 
@@ -24,7 +25,7 @@ const Table = props => {
           <TableHeader>Start date</TableHeader>
           <TableHeader>End date</TableHeader>
           <TableHeader>Title</TableHeader>
-          <TableHeader>Status</TableHeader>
+          <TableHeader>Quantity</TableHeader>
           <TableHeader>Price</TableHeader>
         </tr>
       </thead>
@@ -43,7 +44,7 @@ const Table = props => {
               <TableData>{campaign.startDate}</TableData>
               <TableData>{campaign.endDate}</TableData>
               <TableData>{campaign.name}</TableData>
-              <TableData>{campaign.status}</TableData>
+              <TableData>{campaign.quantity}</TableData>
               <TableData>{campaign.priceDiscount}</TableData>
             </tr>
           );
