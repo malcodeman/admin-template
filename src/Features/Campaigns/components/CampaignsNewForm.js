@@ -102,9 +102,13 @@ const SubmitButtonContainer = styled.div`
 `;
 
 class FormikForm extends Component {
-  openLogoFileInputDialog = e => {
+  openProductImageFileInputDialog = e => {
     e.preventDefault();
-    document.getElementById("logo").click();
+    document.getElementById("productImage").click();
+  };
+  openGuidelinesImageFileInputDialog = e => {
+    e.preventDefault();
+    document.getElementById("guidelinesImage").click();
   };
   render() {
     const { errors, touched, isSubmitting, setFieldValue } = this.props;
@@ -112,38 +116,189 @@ class FormikForm extends Component {
       <Form>
         <FormItem>
           <FormItemInfo>
-            <InfoHeading>Brand display</InfoHeading>
-            <InfoText>Manage display of brand</InfoText>
+            <InfoHeading>Product Display</InfoHeading>
+            <InfoText>
+              Manage the display of your product within Shiff.
+            </InfoText>
           </FormItemInfo>
           <FormItemInput>
             <InputWrapper>
               <LogoWrapper>
-                <Label>Add image of brand logo</Label>
-                <StyledButton onClick={this.openLogoFileInputDialog}>
-                  Add brand logo
+                <Label>Add image of your product</Label>
+                <StyledButton onClick={this.openProductImageFileInputDialog}>
+                  Add product image
                 </StyledButton>
                 <HiddinFileInput
-                  id="logo"
-                  name="logo"
+                  id="productImage"
+                  name="productImage"
                   type="file"
                   onChange={event => {
-                    setFieldValue("logo", event.currentTarget.files[0]);
+                    setFieldValue("productImage", event.currentTarget.files[0]);
                   }}
                 />
               </LogoWrapper>
-              {touched.logo &&
-                errors.logo && <ErrorMessage>{errors.logo}</ErrorMessage>}
+              {touched.productImage &&
+                errors.productImage && (
+                  <ErrorMessage>{errors.productImage}</ErrorMessage>
+                )}
             </InputWrapper>
             <InputWrapper>
-              <Label>Brand name</Label>
+              <Label>Product title</Label>
               <Input type="text" name="name" placeholder="E.g. Sony" />
               {touched.name &&
                 errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
+              <Label>Product description</Label>
+              <Input type="text" name="description" placeholder="E.g. Sony" />
+              {touched.description &&
+                errors.description && (
+                  <ErrorMessage>{errors.description}</ErrorMessage>
+                )}
+              <Label>Brand</Label>
+              <Input type="number" name="idBrand" placeholder="E.g. Sony" />
+              {touched.idBrand &&
+                errors.idBrand && <ErrorMessage>{errors.idBrand}</ErrorMessage>}
+            </InputWrapper>
+          </FormItemInput>
+        </FormItem>
+        <FormItem>
+          <FormItemInfo>
+            <InfoHeading>Product Price</InfoHeading>
+            <InfoText>
+              Set the discount price for influencers(must be at least 20% off
+              your regular retail price).
+            </InfoText>
+          </FormItemInfo>
+          <FormItemInput>
+            <InputWrapper>
+              <Label>Shiff price</Label>
+              <Input
+                type="number"
+                name="priceDiscount"
+                placeholder="E.g. Sony"
+              />
+              {touched.priceDiscount &&
+                errors.priceDiscount && (
+                  <ErrorMessage>{errors.priceDiscount}</ErrorMessage>
+                )}
+              <Label>Regular retail price</Label>
+              <Input
+                type="number"
+                name="priceRegular"
+                placeholder="E.g. Sony"
+              />
+              {touched.priceRegular &&
+                errors.priceRegular && (
+                  <ErrorMessage>{errors.priceRegular}</ErrorMessage>
+                )}
+            </InputWrapper>
+          </FormItemInput>
+        </FormItem>
+        <FormItem>
+          <FormItemInfo>
+            <InfoHeading>Product Quantity</InfoHeading>
+            <InfoText>
+              Set the quantity of products within the during of your campaign.
+            </InfoText>
+          </FormItemInfo>
+          <FormItemInput>
+            <InputWrapper>
+              <Label>Quantity</Label>
+              <Input type="number" name="quantity" placeholder="E.g. Sony" />
+              {touched.quantity &&
+                errors.quantity && (
+                  <ErrorMessage>{errors.quantity}</ErrorMessage>
+                )}
+            </InputWrapper>
+          </FormItemInput>
+        </FormItem>
+        <FormItem>
+          <FormItemInfo>
+            <InfoHeading>Campaign Dates</InfoHeading>
+            <InfoText>Set the duration of your campaign.</InfoText>
+          </FormItemInfo>
+          <FormItemInput>
+            <InputWrapper>
+              <Label>Start date</Label>
+              <Input type="date" name="startDate" placeholder="E.g. Sony" />
+              {touched.startDate &&
+                errors.startDate && (
+                  <ErrorMessage>{errors.startDate}</ErrorMessage>
+                )}
+              <Label>End date</Label>
+              <Input type="date" name="endDate" placeholder="E.g. Sony" />
+              {touched.endDate &&
+                errors.endDate && <ErrorMessage>{errors.endDate}</ErrorMessage>}
+            </InputWrapper>
+          </FormItemInput>
+        </FormItem>
+        <FormItem>
+          <FormItemInfo>
+            <InfoHeading>Post Guidelines</InfoHeading>
+            <InfoText>
+              Set what an approved post/image must contain in terms of copy,
+              imagery, hashtags and hadles.
+            </InfoText>
+          </FormItemInfo>
+          <FormItemInput>
+            <InputWrapper>
+              <LogoWrapper>
+                <Label>Add guidelines image</Label>
+                <StyledButton onClick={this.openGuidelinesImageFileInputDialog}>
+                  Add image
+                </StyledButton>
+                <HiddinFileInput
+                  id="guidelinesImage"
+                  name="guidelinesImage"
+                  type="file"
+                  onChange={event => {
+                    setFieldValue(
+                      "guidelinesImage",
+                      event.currentTarget.files[0]
+                    );
+                  }}
+                />
+              </LogoWrapper>
+              {touched.guidelinesImage &&
+                errors.guidelinesImage && (
+                  <ErrorMessage>{errors.guidelinesImage}</ErrorMessage>
+                )}
+            </InputWrapper>
+            <InputWrapper>
+              <Label>Description</Label>
+              <Input
+                type="text"
+                name="postGuidelines"
+                placeholder="E.g. Sony"
+              />
+              {touched.postGuidelines &&
+                errors.postGuidelines && (
+                  <ErrorMessage>{errors.postGuidelines}</ErrorMessage>
+                )}
+              <Label>Hashtags</Label>
+              <Input
+                type="text"
+                name="postGuidelinesHashtags"
+                placeholder="E.g. Sony"
+              />
+              {touched.postGuidelinesHashtags &&
+                errors.postGuidelinesHashtags && (
+                  <ErrorMessage>{errors.postGuidelinesHashtags}</ErrorMessage>
+                )}
+              <Label>Handles</Label>
+              <Input
+                type="text"
+                name="postGuidelineHandles"
+                placeholder="E.g. Sony"
+              />
+              {touched.postGuidelineHandles &&
+                errors.postGuidelineHandles && (
+                  <ErrorMessage>{errors.postGuidelineHandles}</ErrorMessage>
+                )}
             </InputWrapper>
           </FormItemInput>
         </FormItem>
         <SubmitButtonContainer>
-          <SubmitButton disabled={isSubmitting}>Create brand</SubmitButton>
+          <SubmitButton disabled={isSubmitting}>Create campaign</SubmitButton>
         </SubmitButtonContainer>
       </Form>
     );
@@ -152,18 +307,52 @@ class FormikForm extends Component {
 
 const CampaignsNewForm = withFormik({
   mapPropsToValues: props => ({
+    productImage: props.product || "",
     name: props.name || "",
-    logo: props.logo || ""
+    description: props.description || "",
+    idBrand: props.idBrand || "",
+    priceDiscount: props.priceDiscount || "",
+    priceRegular: props.priceRegular || "",
+    quantity: props.quantity || "",
+    startDate: props.startDate || "",
+    endDate: props.endDate || "",
+    guidelinesImage: props.guidelinesImage || "",
+    postGuidelines: props.postGuidelines || "",
+    postGuidelinesHashtags: props.postGuidelinesHashtags || "",
+    postGuidelineHandles: props.postGuidelineHandles || ""
   }),
   validationSchema: Yup.object().shape({
+    product: Yup.mixed().required("Product image is required"),
     name: Yup.string().required("Name is required"),
-    logo: Yup.mixed().required("Logo is required")
+    description: Yup.string().required("Description is required"),
+    idBrand: Yup.number()
+      .required("Brand is required")
+      .positive("Brand must be a positive number"),
+    priceDiscount: Yup.number()
+      .required("Shiff price is required")
+      .positive("Shiff price must be a positive number"),
+    priceRegular: Yup.number()
+      .required("Regular price is required")
+      .positive("Regular price must be a positive number"),
+    quantity: Yup.number()
+      .required("Quantity is required")
+      .positive("Quantity must be a positive number"),
+    startDate: Yup.string().required("Start Date is required"),
+    endDate: Yup.string().required("End Date is required"),
+    guidelinesImage: Yup.mixed().required("Guidelines image is required"),
+    postGuidelines: Yup.string().required("Guidelines description is required"),
+    postGuidelinesHashtags: Yup.string().required(
+      "Guidelines hashtags is required"
+    ),
+    postGuidelineHandles: Yup.string().required(
+      "Guidelines handles is required"
+    )
   }),
   handleSubmit(payload, bag) {
     bag.setSubmitting(false);
-    //bag.props.uploadBrands(payload, null, 2);
+    //bag.props.uploadCampaigns(payload, null, 2);
     bag.resetForm();
-    window.confirm("Created new brand successfully");
+    window.confirm("Created new campaign successfully");
   }
 })(FormikForm);
 
