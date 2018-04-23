@@ -165,7 +165,15 @@ class FormikForm extends Component {
                   <ErrorMessage>{errors.description}</ErrorMessage>
                 )}
               <Label>Brand</Label>
-              <Input type="number" name="idBrand" />
+              <Input component="select" name="idBrand">
+                {this.props.brands.map(brand => {
+                  return (
+                    <option key={brand.id} value={brand.id}>
+                      {brand.name}
+                    </option>
+                  );
+                })}
+              </Input>
               {touched.idBrand &&
                 errors.idBrand && <ErrorMessage>{errors.idBrand}</ErrorMessage>}
             </InputWrapper>

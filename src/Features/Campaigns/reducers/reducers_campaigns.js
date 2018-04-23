@@ -9,6 +9,7 @@ import {
 const initialState = {
   loading: true,
   uploadCampaignsFailed: false,
+  uploadProductImageSucceeded: false,
   campaigns: []
 };
 
@@ -44,8 +45,10 @@ export default (state = initialState, action) => {
             index === state.campaigns.length - 1
               ? { ...campaign, imageUrl: action.payload }
               : campaign
-        )
+        ),
+        uploadProductImageSucceeded: true
       };
+
     default:
       return state;
   }
