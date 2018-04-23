@@ -1,6 +1,9 @@
 import { all } from "redux-saga/effects";
 
-import { watchFetchCampaigns } from "../../Features/Campaigns/sagas/sagas_campaigns";
+import {
+  watchFetchCampaigns,
+  watchUploadCampaigns
+} from "../../Features/Campaigns/sagas/sagas_campaigns";
 import { watchFetchOrders } from "../../Features/Orders/sagas/sagas_orders";
 import {
   watchFetchBrands,
@@ -11,6 +14,7 @@ import { watchFetchUsers } from "../../Features/Users/sagas/sagas_users";
 export default function* rootSaga() {
   yield all([
     watchFetchCampaigns(),
+    watchUploadCampaigns(),
     watchFetchOrders(),
     watchFetchBrands(),
     watchUploadBrands(),

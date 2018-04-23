@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { withFormik, Form, Field } from "formik";
 import Yup from "yup";
 import styled from "styled-components";
+import moment from "moment";
+import uuidV1 from "uuid/v1";
+
 import { ButtonStyles } from "../../../Core/styles/button";
 
 const SubmitButton = styled.button`
@@ -144,17 +147,25 @@ class FormikForm extends Component {
             </InputWrapper>
             <InputWrapper>
               <Label>Product title</Label>
-              <Input type="text" name="name" placeholder="E.g. Sony" />
+              <Input
+                type="text"
+                name="name"
+                placeholder="E.g. Sony Playstation 4"
+              />
               {touched.name &&
                 errors.name && <ErrorMessage>{errors.name}</ErrorMessage>}
               <Label>Product description</Label>
-              <Input type="text" name="description" placeholder="E.g. Sony" />
+              <Input
+                type="text"
+                name="description"
+                placeholder="E.g. Best gaming console"
+              />
               {touched.description &&
                 errors.description && (
                   <ErrorMessage>{errors.description}</ErrorMessage>
                 )}
               <Label>Brand</Label>
-              <Input type="number" name="idBrand" placeholder="E.g. Sony" />
+              <Input type="number" name="idBrand" />
               {touched.idBrand &&
                 errors.idBrand && <ErrorMessage>{errors.idBrand}</ErrorMessage>}
             </InputWrapper>
@@ -171,21 +182,13 @@ class FormikForm extends Component {
           <FormItemInput>
             <InputWrapper>
               <Label>Shiff price</Label>
-              <Input
-                type="number"
-                name="priceDiscount"
-                placeholder="E.g. Sony"
-              />
+              <Input type="number" name="priceDiscount" />
               {touched.priceDiscount &&
                 errors.priceDiscount && (
                   <ErrorMessage>{errors.priceDiscount}</ErrorMessage>
                 )}
               <Label>Regular retail price</Label>
-              <Input
-                type="number"
-                name="priceRegular"
-                placeholder="E.g. Sony"
-              />
+              <Input type="number" name="priceRegular" />
               {touched.priceRegular &&
                 errors.priceRegular && (
                   <ErrorMessage>{errors.priceRegular}</ErrorMessage>
@@ -203,7 +206,7 @@ class FormikForm extends Component {
           <FormItemInput>
             <InputWrapper>
               <Label>Quantity</Label>
-              <Input type="number" name="quantity" placeholder="E.g. Sony" />
+              <Input type="number" name="quantity" />
               {touched.quantity &&
                 errors.quantity && (
                   <ErrorMessage>{errors.quantity}</ErrorMessage>
@@ -219,13 +222,13 @@ class FormikForm extends Component {
           <FormItemInput>
             <InputWrapper>
               <Label>Start date</Label>
-              <Input type="date" name="startDate" placeholder="E.g. Sony" />
+              <Input type="date" name="startDate" />
               {touched.startDate &&
                 errors.startDate && (
                   <ErrorMessage>{errors.startDate}</ErrorMessage>
                 )}
               <Label>End date</Label>
-              <Input type="date" name="endDate" placeholder="E.g. Sony" />
+              <Input type="date" name="endDate" />
               {touched.endDate &&
                 errors.endDate && <ErrorMessage>{errors.endDate}</ErrorMessage>}
             </InputWrapper>
@@ -278,7 +281,7 @@ class FormikForm extends Component {
               <Input
                 type="text"
                 name="postGuidelinesHashtags"
-                placeholder="E.g. Sony"
+                placeholder="E.g. #shiff #sony #playstation"
               />
               {touched.postGuidelinesHashtags &&
                 errors.postGuidelinesHashtags && (
@@ -288,7 +291,7 @@ class FormikForm extends Component {
               <Input
                 type="text"
                 name="postGuidelineHandles"
-                placeholder="E.g. Sony"
+                placeholder="E.g. https://www.instagram.com/lenameyerlandrut/"
               />
               {touched.postGuidelineHandles &&
                 errors.postGuidelineHandles && (
@@ -321,8 +324,24 @@ const CampaignsNewForm = withFormik({
     postGuidelinesHashtags: props.postGuidelinesHashtags || "",
     postGuidelineHandles: props.postGuidelineHandles || ""
   }),
+
+  mapValuesToPayload: values => ({
+    productImage: values.productImage,
+    name: values.name,
+    description: values.description,
+    idBrand: values.idBrand,
+    priceDiscount: values.priceDiscount,
+    priceRegular: values.priceRegular,
+    quantity: values.quantity,
+    startDate: values.startDate,
+    endDate: values.endDate,
+    guidelinesImage: values.guidelinesImage,
+    postGuidelines: values.postGuidelines,
+    postGuidelinesHashtags: values.postGuidelinesHashtags,
+    postGuidelineHandles: values.postGuidelineHandles
+  }),
   validationSchema: Yup.object().shape({
-    product: Yup.mixed().required("Product image is required"),
+    productImage: Yup.mixed().required("Product image is required"),
     name: Yup.string().required("Name is required"),
     description: Yup.string().required("Description is required"),
     idBrand: Yup.number()
@@ -348,9 +367,28 @@ const CampaignsNewForm = withFormik({
       "Guidelines handles is required"
     )
   }),
+
   handleSubmit(payload, bag) {
+    const newCampaign = {
+      guid: uuidV1(),
+      idUser: 1,
+      idCategory: 1,
+      productImage: payload.productImage,
+      name: payload.name,
+      description: payload.description,
+      idBrand: payload.idBrand,
+      priceDiscount: payload.priceDiscount,
+      priceRegular: payload.priceRegular,
+      quantity: payload.quantity,
+      startDate: moment(payload.startDate).format("YYYY/MM/DD HH:mm:ss"),
+      endDate: moment(payload.endDate).format("YYYY/MM/DD HH:mm:ss"),
+      guidelinesImage: payload.guidelinesImage,
+      postGuidelines: payload.postGuidelines,
+      postGuidelinesHashtags: payload.postGuidelinesHashtags,
+      postGuidelineHandles: payload.postGuidelineHandles
+    };
     bag.setSubmitting(false);
-    //bag.props.uploadCampaigns(payload, null, 2);
+    bag.props.uploadCampaigns(newCampaign);
     bag.resetForm();
     window.confirm("Created new campaign successfully");
   }
