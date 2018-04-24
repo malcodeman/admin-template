@@ -7,6 +7,8 @@ import { ButtonStyles } from "../../../Core/styles/button";
 const SubmitButton = styled.button`
   ${ButtonStyles};
   width: 100%;
+  text-transform: uppercase;
+  color: #fff;
   @media (min-width: 768px) {
     width: 40%;
   }
@@ -75,8 +77,7 @@ const LoginForm = withFormik({
   }),
   handleSubmit(payload, bag) {
     bag.setSubmitting(false);
-    //bag.props.uploadBrands(payload, null, 2);
-    bag.resetForm();
+    bag.props.submitLogin(payload);
   }
 })(FormikForm);
 

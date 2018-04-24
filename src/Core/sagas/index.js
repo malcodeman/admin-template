@@ -11,8 +11,11 @@ import {
 } from "../../Features/Brands/sagas/sagas_brands";
 import { watchFetchUsers } from "../../Features/Users/sagas/sagas_users";
 
+import { watchsubmitAuthLogin } from "../../Features/Auth/sagas/sagas_auth";
+
 export default function* rootSaga() {
   yield all([
+    watchsubmitAuthLogin(),
     watchFetchCampaigns(),
     watchUploadCampaigns(),
     watchFetchOrders(),

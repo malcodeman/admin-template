@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 import Sidebar from "./Features/Layout/sidebar/components/Sidebar";
 import Toolbar from "./Features/Layout/Toolbar";
 
 import "./App.css";
 import routes from "./Core/routing/routes_sidebar";
+import { loggedIn } from "./Features/Auth/actions/actions_auth";
 
 const Wrapper = styled.div`
   min-height: 100vh;
@@ -26,6 +28,9 @@ const Main = styled.main`
 `;
 
 class App extends Component {
+  componentWillMount = () => {
+    this.props.loggedIn();
+  };
   render() {
     if (localStorage.getItem("token") === null) {
       return <Redirect to="/login" />;
@@ -49,4 +54,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    loggedIn: () => dispatch(loggedIn())
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

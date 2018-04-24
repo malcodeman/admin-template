@@ -1,9 +1,12 @@
 import React, { Component } from "react";
-import axios from "axios";
 import styled from "styled-components";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 import Features from "./Features";
 import LoginForm from "./LoginForm";
+
+import { submitLogin } from "../actions/actions_auth";
 
 const Wrapper = styled.div``;
 
@@ -25,6 +28,7 @@ const CenterWrapper = styled.div`
 const FormWrapper = styled.div`
   max-width: 50%;
   width: 100%;
+  padding: 20px 0;
 `;
 
 const Heading = styled.h1`
@@ -38,18 +42,10 @@ const Text = styled.p`
 `;
 
 class Login extends Component {
-  submitLogin = () => {
-    const email = "admin@shiff.co";
-    const password = "Weareshiffco123###";
-    axios
-      .post("http://localhost:9000/api/v1/auth/login", { email, password })
-      .then(res => {
-        console.log(res);
-        localStorage.setItem("token", `Bearer ${res.data.token}`);
-        this.props.history.push("/");
-      });
-  };
   render() {
+    if (this.props.authLoginSucceeded) {
+      return <Redirect to="/" />;
+    }
     return (
       <Wrapper>
         <Grid>
@@ -58,9 +54,7 @@ class Login extends Component {
             <FormWrapper>
               <Heading>Sign in to Shiff.</Heading>
               <Text>Enter your details below.</Text>
-              <div>
-                <LoginForm />
-              </div>
+              <LoginForm submitLogin={this.props.submitLogin} />
             </FormWrapper>
           </CenterWrapper>
         </Grid>
@@ -69,4 +63,17 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {
+    authLoginSucceeded: state.auth.authLoginSucceeded,
+    authLoginFailed: state.auth.authLoginFailed
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    submitLogin: loginData => dispatch(submitLogin(loginData))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
