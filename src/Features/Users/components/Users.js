@@ -3,19 +3,11 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 import { requestUsers } from "../actions/actions_users";
-import profileImage from "./profile.jpg";
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-`;
-
-const UserImage = styled.img`
-  height: 32px;
-  width: 32px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 10px;
+  padding: 0 10px;
 `;
 
 const UserAccount = styled.div`
@@ -34,7 +26,6 @@ class Users extends Component {
   render() {
     return (
       <Wrapper>
-        <UserImage src={profileImage} />
         <UserAccount>
           <Text>{this.props.users.displayName}</Text>
           <Text>{this.props.users.email}</Text>
