@@ -9,6 +9,7 @@ const SubmitButton = styled.button`
   width: 100%;
   text-transform: uppercase;
   color: #fff;
+  height: 48px;
   @media (min-width: 768px) {
     width: 40%;
   }
@@ -72,7 +73,9 @@ const LoginForm = withFormik({
     password: props.password || ""
   }),
   validationSchema: Yup.object().shape({
-    email: Yup.string().required("Email is required"),
+    email: Yup.string()
+      .required("Email is required")
+      .email("Format is not correct"),
     password: Yup.string().required("Password is required")
   }),
   handleSubmit(payload, bag) {

@@ -26,9 +26,12 @@ const CenterWrapper = styled.div`
 `;
 
 const FormWrapper = styled.div`
-  max-width: 50%;
   width: 100%;
-  padding: 20px 0;
+  padding: 20px;
+  @media (min-width: 768px) {
+    padding: 20px 0;
+    max-width: 50%;
+  }
 `;
 
 const Heading = styled.h1`
