@@ -1,5 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
+
+import OrderStatusForm from "./OrderStatusForm";
+import { updateOrdersStatus } from "../actions/actions_orders";
 
 const StyledTable = styled.table`
   width: 100%;
@@ -46,15 +50,17 @@ const Table = props => {
                 )}
               </TableData>
               <TableData>
-                <select
-                  defaultValue={order.orderStatus}
-                  onChange={this.handleChangeStatus}
-                >
-                  <option value="shipped">Shipped</option>
-                  <option value="ordered">Ordered</option>
-                  <option value="paid">Paid</option>
-                  <option value="failed">Failed</option>
-                </select>
+                <OrderStatusForm
+                  statuses={[
+                    { id: "1", value: "ordered" },
+                    { id: "2", value: "shipped" },
+                    { id: "3", value: "paid" },
+                    { id: "4", value: "failed" }
+                  ]}
+                  updateOrdersStatus={props.updateOrdersStatus}
+                  orderStatus={order.orderStatus}
+                  orderID={order.orderId}
+                />
               </TableData>
             </tr>
           );
@@ -64,4 +70,10 @@ const Table = props => {
   );
 };
 
-export default Table;
+const mapDispatchToProps = dispatch => {
+  return {
+    updateOrdersStatus: newStatus => dispatch(updateOrdersStatus(newStatus))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Table);

@@ -1,5 +1,8 @@
-import { REQUEST_ORDERS } from "../actions/actions_orders";
-import { RECIVE_ORDERS } from "../actions/actions_orders";
+import {
+  REQUEST_ORDERS,
+  RECIVE_ORDERS,
+  UPDATE_ORDERS_STATUS_SUCCEEDED
+} from "../actions/actions_orders";
 
 const initialState = {
   loading: true,
@@ -17,6 +20,17 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         orders: action.payload
+      };
+    case UPDATE_ORDERS_STATUS_SUCCEEDED:
+      return {
+        ...state,
+        // IDs in database go from 1 so index + 1 is necessary
+        orders: state.orders.map(
+          (order, index) =>
+            index + 1 === action.payload.id
+              ? { ...order, orderStatus: action.payload.orderStatus }
+              : order
+        )
       };
     default:
       return state;

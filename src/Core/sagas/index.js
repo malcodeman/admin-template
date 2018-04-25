@@ -4,7 +4,10 @@ import {
   watchFetchCampaigns,
   watchUploadCampaigns
 } from "../../Features/Campaigns/sagas/sagas_campaigns";
-import { watchFetchOrders } from "../../Features/Orders/sagas/sagas_orders";
+import {
+  watchFetchOrders,
+  watchUpdateOrdersStatus
+} from "../../Features/Orders/sagas/sagas_orders";
 import {
   watchFetchBrands,
   watchUploadBrands
@@ -19,6 +22,7 @@ export default function* rootSaga() {
     watchFetchCampaigns(),
     watchUploadCampaigns(),
     watchFetchOrders(),
+    watchUpdateOrdersStatus(),
     watchFetchBrands(),
     watchUploadBrands(),
     watchFetchUsers()

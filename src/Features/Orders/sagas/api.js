@@ -19,3 +19,9 @@ const API_URL = process.env.REACT_APP_API_URL;
 export const getOrders = () => {
   return axios.get(`${API_URL}/orders/admin`);
 };
+
+export const putOrdersStatus = newStatus => {
+  return axios.put(`${API_URL}/orders/${newStatus.orderID}`, {
+    orderStatus: newStatus.orderStatus
+  });
+};
