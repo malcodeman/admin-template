@@ -13,7 +13,7 @@ const Asset = (props: Props) => {
   return (
     <Chakralink href={permalink} isExternal>
       <AspectRatio mb={"2"}>
-        <Image src={image_url} alt="" />
+        <Image src={image_url} alt="" borderRadius={"lg"} />
       </AspectRatio>
       <Text fontSize={"small"} textTransform={"uppercase"} textAlign={"center"}>
         {name}
