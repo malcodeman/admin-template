@@ -1,5 +1,6 @@
 import React from "react";
-import { Grid, Box, Divider, Heading } from "@chakra-ui/layout";
+import { Grid, Box, Divider, Heading, Center } from "@chakra-ui/layout";
+import { Spinner } from "@chakra-ui/spinner";
 import { map } from "ramda";
 import type { NextPage } from "next";
 
@@ -20,11 +21,11 @@ const Home: NextPage = () => {
     orderDirection: orderDirection,
     collection: "azuki",
   });
-  const { data: collections } = useCollections();
+  const { data: collections, isLoading } = useCollections();
 
   return (
-    <Grid gridGap={"4"} gridTemplateColumns={"256px 1fr"} minHeight={"100vh"}>
-      <Box>
+    <Grid gridGap={"4"} gridTemplateColumns={["1fr", "1fr", "256px 1fr"]}>
+      <Box display={["none", "none", "block"]}>
         <Heading fontSize={"2xl"} textTransform={"uppercase"} mb={"2"}>
           Filter
         </Heading>
@@ -40,23 +41,29 @@ const Home: NextPage = () => {
           NFTs
         </Heading>
         <Divider mb={"4"} />
-        <Grid
-          gridGap={"4"}
-          gridTemplateColumns={"repeat(auto-fill, minmax(222px, 1fr))"}
-        >
-          {map(
-            (item) => (
-              <Asset
-                key={item.id}
-                id={item.id}
-                image_url={item.image_url}
-                name={item.name}
-                permalink={item.permalink}
-              />
-            ),
-            assets.assets
-          )}
-        </Grid>
+        {isLoading ? (
+          <Center>
+            <Spinner />
+          </Center>
+        ) : (
+          <Grid
+            gridGap={"4"}
+            gridTemplateColumns={"repeat(auto-fill, minmax(222px, 1fr))"}
+          >
+            {map(
+              (item) => (
+                <Asset
+                  key={item.id}
+                  id={item.id}
+                  image_url={item.image_url}
+                  name={item.name}
+                  permalink={item.permalink}
+                />
+              ),
+              assets.assets
+            )}
+          </Grid>
+        )}
       </Box>
     </Grid>
   );

@@ -1,7 +1,8 @@
 import { Box, Container, Flex } from "@chakra-ui/layout";
-import { Button } from "@chakra-ui/button";
+import { Button, IconButton } from "@chakra-ui/button";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { Menu } from "react-feather";
 
 const GRADIENT = "linear-gradient(90deg,#0c44fd,#e901d8)";
 
@@ -33,7 +34,13 @@ const Header = () => {
               piazza
             </Button>
           </Link>
-          <Flex alignItems="center">
+          <IconButton
+            size={"sm"}
+            display={["inline-flex", "none"]}
+            aria-label="Menu"
+            icon={<Menu />}
+          />
+          <Flex display={["none", "flex"]} alignItems="center">
             <Link href="/" passHref>
               <Button size={"sm"} mr="4" isActive={router.pathname === "/"}>
                 Home
