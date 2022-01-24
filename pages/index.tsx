@@ -52,7 +52,12 @@ const Home: NextPage = () => {
 
   return (
     <Grid gridGap={"4"} gridTemplateColumns={["1fr", "1fr", "256px 1fr"]}>
-      <Box display={["none", "none", "block"]}>
+      <Box
+        display={["none", "none", "block"]}
+        position={"sticky"}
+        top={"0"}
+        alignSelf={"start"}
+      >
         <Heading fontSize={"2xl"} textTransform={"uppercase"} mb={"2"}>
           Filter
         </Heading>
