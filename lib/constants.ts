@@ -27,10 +27,25 @@ const ORDER_DIRECTION = [
     value: "desc",
   },
 ];
+const MENU = [
+  {
+    value: "/",
+    label: "Home",
+  },
+  {
+    value: "/updates",
+    label: "Updates",
+  },
+  {
+    value: "/manifesto",
+    label: "Manifesto",
+  },
+];
 const EXPORTS = {
   API_URL,
   ORDER_BY,
   ORDER_DIRECTION,
+  MENU,
 };
 
 export default EXPORTS;
