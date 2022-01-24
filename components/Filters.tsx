@@ -34,7 +34,12 @@ const Filters = (props: Props) => {
           </AccordionButton>
         </h2>
         <AccordionPanel>
-          <Input variant={"filled"} placeholder="Search..." mb="2" />
+          <Input
+            size={"sm"}
+            variant={"filled"}
+            placeholder="Search..."
+            mb="2"
+          />
           {map(
             (item) => (
               <Flex key={item.slug} alignItems={"center"}>
@@ -56,6 +61,7 @@ const Filters = (props: Props) => {
         </h2>
         <AccordionPanel>
           <Select
+            size={"sm"}
             mb="2"
             variant={"filled"}
             onChange={(e) =>
@@ -70,6 +76,7 @@ const Filters = (props: Props) => {
             )}
           </Select>
           <Select
+            size={"sm"}
             variant={"filled"}
             onChange={(e) => setOrderBy(e.target.value as OrderBy)}
           >

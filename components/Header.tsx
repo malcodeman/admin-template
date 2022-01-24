@@ -12,6 +12,7 @@ import { map } from "ramda";
 import constants from "../lib/constants";
 
 import MobileMenu from "./MobileMenu";
+import ColorMode from "./ColorMode";
 
 const GRADIENT = "linear-gradient(90deg,#0c44fd,#e901d8)";
 
@@ -92,7 +93,7 @@ const Header = () => {
                 <Link href={item.value} passHref>
                   <Button
                     size={"sm"}
-                    mr={item.value === "/manifesto" ? "0" : "4"}
+                    mr={"4"}
                     isActive={router.pathname === item.value}
                   >
                     {item.label}
@@ -101,6 +102,7 @@ const Header = () => {
               ),
               constants.MENU
             )}
+            <ColorMode size="sm" />
           </Flex>
         </Flex>
       </Container>
