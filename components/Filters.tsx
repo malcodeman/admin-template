@@ -23,33 +23,7 @@ type Props = {
 const Filters = (props: Props) => {
   const { collections, setOrderBy, setOrderDirection } = props;
   return (
-    <Accordion allowMultiple>
-      <AccordionItem>
-        <h2>
-          <AccordionButton>
-            <Box flex="1" textAlign="left">
-              Collections
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-        </h2>
-        <AccordionPanel>
-          <Input
-            size={"sm"}
-            variant={"filled"}
-            placeholder="Search..."
-            mb="2"
-          />
-          {map(
-            (item) => (
-              <Flex key={item.slug} alignItems={"center"}>
-                {item.slug}
-              </Flex>
-            ),
-            collections.collections
-          )}
-        </AccordionPanel>
-      </AccordionItem>
+    <Accordion defaultIndex={0} allowToggle>
       <AccordionItem>
         <h2>
           <AccordionButton>
@@ -87,6 +61,32 @@ const Filters = (props: Props) => {
               constants.ORDER_BY
             )}
           </Select>
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem>
+        <h2>
+          <AccordionButton>
+            <Box flex="1" textAlign="left">
+              Collections
+            </Box>
+            <AccordionIcon />
+          </AccordionButton>
+        </h2>
+        <AccordionPanel>
+          <Input
+            size={"sm"}
+            variant={"filled"}
+            placeholder="Search..."
+            mb="2"
+          />
+          {map(
+            (item) => (
+              <Flex key={item.slug} alignItems={"center"}>
+                {item.slug}
+              </Flex>
+            ),
+            collections.collections
+          )}
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
