@@ -1,17 +1,19 @@
-# admin-template
+# nft-marketplace
 
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://cypress.io)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/malcodeman/admin-template/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/malcodeman/nft-marketplace/blob/master/LICENSE)
 
-Free admin template.
+Simple NFT marketplace using opensea api.
+
+![Screenshot](readme/screenshot.png)
 
 ## Getting started
 
 ```
-git clone https://github.com/malcodeman/admin-template.git admin-template
-cd admin-template
+git clone https://github.com/malcodeman/nft-marketplace.git nft-marketplace
+cd nft-marketplace
 yarn install && yarn dev
 ```
 
